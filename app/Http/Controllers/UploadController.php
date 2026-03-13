@@ -14,6 +14,9 @@ class UploadController extends Controller
         ]);
 
         // Store here
+        $path = $request->file('avatar')->store('avatars', 'public');
+
+        $path = asset('storage/' . $path);
 
         return back()->with('success', 'Avatar uploadé : ' . $path);
     }
@@ -25,6 +28,7 @@ class UploadController extends Controller
         ]);
 
         // Store here
+        $path = $request->file('pdf')->store('private/documents');
 
         return back()->with('success', 'PDF uploadé : ' . $path);
     }
